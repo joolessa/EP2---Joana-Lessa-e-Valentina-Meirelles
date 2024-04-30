@@ -66,3 +66,43 @@ CORES = {
     'cyan': '\u001b[36m',
     'white': '\u001b[37m'
 }
+# INICIANDO PROGRAMA
+print(' ================================================================= ')
+print('|                                                                 |')
+print('|               Bem-vindo ao INSPER - Batalha Naval               |')
+print('|                                                                 |')
+print(' ================================================================= ')
+
+print('Iniciando o Jogo!')
+pais_sorteado = random.choice(list(PAISES.keys()))
+print('Computador está alocando os navios de guerra do pais {}...'.format(pais_sorteado))
+print('Computador já está em posição de batalha!') 
+
+c = 1
+for i, j in PAISES.items():
+    print('{}:{}'.format(c, i))
+    for k,l in j.items():
+        print('{} {}'.format(l,k))
+    c = c + 1
+
+dic_nacoes = {1: 'Brasil', 2: 'França', 3: 'Austrália', 4: 'Rússia', 5: 'Japão'}
+numero_nacao = int(input('Qual o número da nação da sua frota? '))
+nacao = dic_nacoes[numero_nacao]
+print('Você escolheu a nação {}'. format(nacao))
+print('Agora é a sua vez de alocar seus navios de guerra!')
+
+# CRIANDO O MAPA
+def cria_mapa(N):
+    letras = "ABCDEFGHIJ"[:N]
+    print("   COMPUTADOR - {}                                               JOGADOR - {}".format(pais_sorteado, nacao))
+    print("     " + "  ".join(letras) +"                                    " + "     " + "  ".join(letras))
+
+    for i in range(1, N + 1):
+        linha = "{:2d}".format(i)
+        for _ in range(N):
+            linha += "   "
+        print(linha + "    " + linha + linha + "    " + linha )
+
+    print("     " + "  ".join(letras) + "                                    " + "     " + "  ".join(letras))
+# print do mapa
+cria_mapa(10)
