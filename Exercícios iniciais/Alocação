@@ -1,0 +1,34 @@
+import random
+def posicao_suporta(mapa, blocos, linha, coluna, orientacao):
+    tamanho_mapa = len(mapa)
+    
+    if linha >= tamanho_mapa or coluna >= tamanho_mapa:
+        return False
+    
+    for i in range(blocos):
+        if orientacao == 'v':
+            if linha + i >= tamanho_mapa or mapa[linha + i][coluna] != ' ':
+                return False
+        elif orientacao == 'h':
+            if coluna + i >= tamanho_mapa or mapa[linha][coluna + i] != ' ':
+                return False
+        else:
+            return False
+    
+    return True
+def aloca_navios(mapa, lista_blocos):
+    n = len(mapa)
+    for blocos in lista_blocos:
+        navio_alocado = False
+        while not navio_alocado:
+            linha = random.randint(0, n-1)
+            coluna = random.randint(0, n-1)
+            orientacao = random.choice(['h', 'v'])
+            if posicao_suporta(mapa, blocos, linha, coluna, orientacao):
+                for i in range(blocos):
+                    if orientacao == 'v':
+                        mapa[linha + i][coluna] = 'N'
+                    elif orientacao == 'h':
+                        mapa[linha][coluna + i] = 'N'
+                navio_alocado = True
+    return mapa

@@ -1,0 +1,7 @@
+def cria_mapa(N): 
+    matriz = []
+    for i in range(0,N):
+        matriz.append([' ']* N)
+    return matriz
+
+print (cria_mapa(4))

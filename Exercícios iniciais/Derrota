@@ -1,0 +1,5 @@
+def foi_derrotado(matriz):
+    for listas in matriz:
+        if 'N' in listas:
+            return False 
+    return True
